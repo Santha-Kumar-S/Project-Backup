@@ -1,5 +1,5 @@
 from json import dumps
-from imageProcessor import process  # Replace with actual file name where the function is implemented
+from imageProcessor import process  
 
 
 class ToneAnalyser:
