@@ -1,0 +1,362 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
+:root{
+    --primary-color: #F0CFBD;
+    --secondary-color:#000000;
+    --white-color:#ffffff;
+    --hover--color:#E3717A;
+}
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Kaisei HarunoUmi", serif;
+}
+a{
+    color: var(--secondary-color);
+}
+.skin_container{
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    overflow: auto;
+}
+.row{
+    display: flex;
+}
+.skin_info{
+    position: relative;
+    width: 1020px;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+.skin_info .girl{
+    position: absolute;
+    top: 150px;
+    padding: 50px;
+}
+.skin_info h1{
+    position: absolute;
+    left: 285px;
+    top: 350px;
+    padding: 20px 100px;
+}
+.skin_info button{
+    position: absolute;
+    left: 380px;
+    top: 500px;
+    padding: 20px;
+    background-color: var(--primary-color);
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+.skin_info button:hover{
+    background-color: var(--hover--color);
+    color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.skin_info .bag1{
+    position: absolute;
+    
+}
+.skin_info .pink_dress{
+    position: absolute;
+    left: 350px;
+    
+}
+.skin_info .coat{
+    position: absolute;
+    left: 350px;
+    top: 580px;
+}
+.skin_info .bag2{
+    position: absolute;
+    transform: rotate(60deg);
+    top: 600px;
+    left: 250px;
+}
+.skin_info .bag3{
+    position: absolute;
+    transform: rotate(-60deg);
+    top:500px;
+    left: 850px;
+}
+.skin_info .bag4{
+    position: absolute;
+    transform: rotate(-150deg);
+    top:100px;
+    left: 850px;
+}
+.skin_display{
+    position: relative;
+   
+    overflow: hidden;
+    width: 500px;
+}
+.skin_display .bg{
+    position: absolute;
+    top: 250px;
+}
+.skin_display .bag5{
+    position: absolute;
+    transform: rotate(20deg);
+    top:600px;
+    
+}
+.skin_display .bag6{
+    position: absolute;
+    transform: rotate(-20deg);
+   left: 150px;
+    
+}
+.predict_form{
+    margin: 80px 160px 0px 160px;
+    height: 750px;
+    width: 500px;
+    border: 1px solid black;
+    background-color: var(--white-color);
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.girl.bgform{
+    position: absolute;
+    top: 250px;
+    left: 1300px;
+}
+
+.heading{
+    padding: 15px;
+}
+.uploadImage{
+    
+    margin: 5px;
+}
+.upinput{
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid black;
+}
+.predict_Tone{
+    margin-left: 150px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+.result_data{
+    margin: 20px;
+    height: 480px;
+    width: 450px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
+}
+.result_data h4{
+    margin: 25px;
+}
+.result_data p{
+    margin: 5px;
+    font-size: 1.5em;
+}
+.result_data img{
+    height: 100px;
+    width: 100px;
+    margin: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+}
+.color_pd{
+    margin: 10px;
+}
+.predict_Tone.md{
+    padding: 25px;
+    margin-left: 250px;
+}
+.bag4.assc{
+    transform: rotate(50deg);
+    
+}
+.genderForm{
+   
+   position: relative;
+    border: 1px solid black;
+    background-color: var(--white-color);
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 80px 160px 0px 160px;
+    height: 750px;
+    width: 900px;
+
+}
+.icon{
+    margin: 20px 80px;
+    cursor: pointer;
+
+}
+.bg_avatar{
+    margin: 15px;
+    border: 1px solid black;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.genderForm .predict_Tone.md1{
+    position: absolute;
+    right: 50px;
+    padding: 15px;
+    
+}
+#body_measurement{
+    display: flex;
+    flex-direction: column;
+}
+.bd_measurement{
+    padding: 10px;
+    margin: 5px;
+   
+}
+.body_data{
+    width: 500px;
+    background-color: var(--white-color);
+    height: 500px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin-left: 500px;
+   margin-top: 200px;
+}
+.body_data h4{
+padding: 15px;
+}
+.bodyform{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.predict_Tone.md2{
+    padding: 20px;
+    width: 100px;
+    margin: 15px;
+    margin-left: 155px;
+}
+.modeForm{
+   
+    height: 100vh;
+}
+.myMode{
+    position: relative;
+}
+.myMode .causal{
+    position: absolute;
+    margin: 15px;
+}
+.myMode .party{
+    position: absolute;
+    left: 500px;
+    margin: 15px;
+}
+.myMode .marriage{
+    position: absolute;
+    top: 450px;
+    margin: 15px;
+    left: 350px;
+}
+.modeResult {
+    position: absolute;
+   right: 150px;
+   top: 600px;
+   font-size: 25px;
+   font-weight: bold;
+}
+.predict_Tone.proceed{
+    position: absolute;
+   right: 260px;
+    top: 680px;
+    font-size: 1.9em;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: var(--primary-color)
+}
+.result_page{
+    height:800px;
+    width: 700px;
+    margin-left: 356px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: var(--white-color)
+}
+.result_img{
+    margin: 15px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.header{
+   
+}
+.predict_label{
+    padding: 15px;
+    font-size: 2.8em;
+}
+.bdy_measure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px;
+}
+.backToHome{
+    padding: 15px;
+    position: absolute;
+    margin-left: 890px;
+    top: 680px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+ul{
+    display: flex;
+}
+.menus{
+    margin: 10px;
+}
+li{
+    padding: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+
+}
+li:hover{
+    text-decoration: underline;
+    color: var(--hover--color);
+}
+.row.jutify{
+    justify-content: space-between;
+}
+.about_header{
+    text-align: center;
+}
+.about_file{
+    margin: 45px;
+   
+}
+.content{
+    margin: 30px;
+    text-align: justify;
+    line-height: 2;
+}
+.contactForm{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    padding: 15px;
+    background-color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.contactForm input{
+    padding: 15px;
+    margin: 15px;
+}
+.contactForm textarea{
+   
+    margin: 15px;
+}
+.site_info{
+    margin: 50px;
+}
+.site_info p{
+    text-align: center;
+    padding: 15px;
+}

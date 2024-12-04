@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Skin Tone Detection</title>
+</head>
+<body>
+    <div class="skin_container">
+        <p class="heading">Skin Tone Detection with Dress Recommendation</p>
+       <div class="predict_form" id="predict_form">
+        <form method="post" action="/skin_tone_predict" enctype="multipart/form-data">
+            <div class="uploadImage">
+                <input type="file" placeholder="uploadImage" name="image" class="upinput">
+            </div>
+            <input type="submit" value="Predict Tone" class="predict_Tone"/>
+        </form>
+        <div class="result_data">
+            <h4>Predicted Result</h4>
+            {% if result != '' %}                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            <p id="myLabel">{{result.label}}</p>
+            <img src="static/asset/tone_test/{{result.imageFile}}" alt="">
+            <p>{{result.dominant_colors}}</p>
+            <div class="row">
+                <div  class="color_pd">
+                    <div style="height: 50px; width: 50px; background-color: {{ result.dominant_colors[0].color }};"></div>
+                    <p>{{result.dominant_colors[0].percent}}%</p>
+                </div>
+                <div  class="color_pd"> 
+                    <div  style="height: 50px; width: 50px; background-color: {{ result.dominant_colors[1].color }};"></div>
+                    <p>{{result.dominant_colors[1].percent}}%</p>
+                </div>
+               
+            </div>
+        {% elif result==''%}
+            <p>No Result Predicted</p>
+        {% endif%}
+        </div>
+        <button class="predict_Tone md" id="viewDressbtn"> View Dress</button>
+       </div>
+       <div class="genderForm" id="genderForm">
+        <div class="row">
+            <div class="bg_avatar" id="male"  >
+                <img src="static/asset/bg/7.png" alt=""  class="icon" onclick="getId(1)">
+            </div>
+            <div class="bg_avatar" id="female">
+                <img src="static/asset/bg/8.png" alt="" class="icon" onclick="getId(2)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="bg_avatar" id="kid1">
+                <img src="static/asset/bg/9.png" alt="" class="icon" onclick="getId(3)">  
+            </div>
+            <div class="bg_avatar" id="kid2">
+                <img src="static/asset/bg/10.png" alt="" class="icon" onclick="getId(4)">
+            </div>
+        </div>
+        
+      
+       
+        <button id="nxtBtn" class="predict_Tone md1"> Next</button>
+        
+       </div>
+       <div class="body_data" id="body_measurement">
+        <h4>Body Measurement</h4>
+        <div class="bodyform">
+        <input type="number" placeholder="Shoulder" id="shoulder" class="bd_measurement" required>
+        <input type="number" placeholder="Chest" id="chest" class="bd_measurement" required>
+        <input type="number" placeholder="Waist" id="waist" class="bd_measurement" required>
+        <input type="number" placeholder="Hip" id="hip"  class="bd_measurement" required>
+        <input type="number" placeholder="Knee" id="knee" class="bd_measurement" required>
+        <input type="number" placeholder="Ankle" id="ankle" class="bd_measurement" required>
+        <input type="submit" id="bodyBtn" class="predict_Tone md2" value="Next">
+        </div>
+    </div>
+
+    <div class="modeForm" id="modeForm">
+        <div class="myMode">
+            <img src="static/asset/bg/11.png" alt=""  class="causal" id="causal" >
+            <img src="static/asset/bg/12.png" alt="" class="party"  id="party">
+            <img src="static/asset/bg/13.png" alt="" class="marriage"  id="marriage">
+         
+    
+        </div>
+        
+      
+       
+        <button id="proceedBtn" class="predict_Tone proceed"> Proceed</button>
+        
+       </div>
+
+       <div class="result_page" id="result_page" >
+       
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+       <p class="modeResult"> <span id="modeid"></span></p>
+       <button id="backToHome" class="backToHome "  > Back To Home</button>
+
+    </div>
+    
+  <script>
+    let userData=''
+    let mode =''
+     let gender =''
+     let shoulderMeasurement = ''
+     let chestMeasurement = ''
+     let waistMeasurement = ''
+     let hipMeasurement = ''
+     let kneeMeasurement = ''
+     let ankleMeasurement = ''
+     let causal = document.getElementById("causal")
+     let party = document.getElementById("party")
+     let marriage = document.getElementById("marriage")
+     let proceedBtn = document.getElementById("proceedBtn")
+     let male = document.getElementById("male")
+     let female = document.getElementById("female")
+     let kid1 = document.getElementById("kid1")
+     let shoulder = document.getElementById("shoulder")
+     let chest = document.getElementById("chest")
+     let waist = document.getElementById("waist")
+     let hip = document.getElementById("hip")
+     let knee = document.getElementById("knee")
+     let ankle = document.getElementById("ankle")
+     let kid2 = document.getElementById("kid2")
+     let modeid = document.getElementById("modeid")
+     let bodyBtn = document.getElementById("bodyBtn")
+     let nxtBtn = document.getElementById("nxtBtn")
+     let body_measurement = document.getElementById("body_measurement")
+   
+     nxtBtn.addEventListener('click',()=>{
+        genderForm.style.display='none'
+        body_measurement.style.display='block'
+     })
+     bodyBtn.addEventListener('click',()=>{
+        shoulderMeasurement =shoulder.value
+        chestMeasurement =chest.value
+        waistMeasurement =waist.value
+        hipMeasurement =hip.value
+        kneeMeasurement =knee.value
+        ankleMeasurement =ankle.value
+
+      body_measurement.style.display='none'
+      modeForm.style.display='block'
+        console.log(ankle.value)
+     })
+   
+    function getId(id){
+        switch (id){
+            case 1:
+                male.style.backgroundColor="#2a8a0d"
+                gender= 'male'
+                break;
+            case 2:
+                female.style.backgroundColor="#2a8a0d"
+                gender= 'female'
+                break;
+            case 3:
+                kid1.style.backgroundColor="#2a8a0d"
+                gender= 'kid1'
+                break;
+            case 4:
+                kid2.style.backgroundColor="#2a8a0d"
+                gender= 'kid2'
+                break;
+        }
+        console.log(gender)
+
+    }
+    $(document).ready(()=>{
+
+        let backToHome = document.getElementById("backToHome")
+  
+    backToHome.addEventListener('click',()=>{
+        window.location.href = '/backToHome';
+    })
+        let view_dress_btn = document.getElementById("viewDressbtn")
+       
+        let predict_form = document.getElementById("predict_form")
+        let myLabel = document.getElementById("myLabel")
+        let genderForm = document.getElementById("genderForm")
+        let result_page = document.getElementById("result_page")
+        let modeForm = document.getElementById("modeForm")
+        body_measurement.style.display='none'
+        backToHome.style.display='none'
+        modeForm.style.display='none'
+        result_page.style.display='none'
+        genderForm.style.display='none'
+        genderForm.style.display='none'
+        marriage.addEventListener('click',()=>{
+            modeid.innerHTML = "Choosen Wear:marriage"
+            mode ="marriage"
+            modeid.style.display='block'
+        })
+        party.addEventListener('click',()=>{
+            modeid.innerHTML = "Choosen Wear: party"
+            mode ="party"
+            modeid.style.display='block'
+        })
+        causal.addEventListener('click',()=>{
+            modeid.innerHTML = "Choosen Wear: causal"
+            mode ="causal"
+            modeid.style.display='block'
+        })
+        view_dress_btn.addEventListener('click',()=>{
+            console.log("hello")
+            genderForm.style.display='block'
+            predict_form.style.display='none'
+        })
+        proceedBtn.addEventListener('click',()=>{
+            backToHome.style.display='block'
+            result_page.style.display ='block'
+            modeForm.style.display='none'
+            modeid.style.display='none'
+        userData = {
+            'tone':myLabel.textContent,
+            'gender':gender,
+            'shoulder':shoulderMeasurement,
+            'chest':chestMeasurement,
+            'waist':waistMeasurement,
+            'hip':hipMeasurement,
+            'knee':kneeMeasurement,
+            'ankle':ankleMeasurement,
+            'mode':mode,
+        }
+        let result_content = `
+    <div>
+        <p class="predict_label"> Predicted Tone: ${userData.tone}</p>
+        <p class="predict_label">Gender: ${userData.gender}</p>
+        <p class="predict_label">Mode: ${userData.mode}</p>
+        <div class="bdy_measure">
+            <p>Shoulder: ${userData.shoulder}</p>
+        <p>Chest: ${userData.chest}</p>
+        <p>Waist: ${userData.waist}</p>
+        <p>Hip: ${userData.hip}</p>
+        <p>Knee: ${userData.knee}</p>
+        <p>Ankle: ${userData.ankle}</p>
+        </div>
+       
+        
+        <div class="row">
+            <img src='static/asset/Recommendation/${userData.gender}/${userData.tone}/${userData.mode}/Top/1.jpg' height="250px" width="250px" class="result_img"/ >
+        <img src='static/asset/Recommendation/${userData.gender}/${userData.tone}/${userData.mode}/Bottom/1.jpg' height="250px" width="250px" class="result_img"/ >
+            </div>
+           
+    </div>
+`;
+result_page.innerHTML = result_content;
+            
+        console.log(userData)
+     })
+        
+    })
+  </script>
+</body>
+</html>
